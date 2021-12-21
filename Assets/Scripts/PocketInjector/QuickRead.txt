@@ -1,0 +1,26 @@
+benapprill.unitydev@gmail.com - To address any concerns or issues, message this e-mail.
+https://sites.google.com/view/benapprillunitydev/pocket-injector - Reference to my portfolio site. More information about PocketInjector available here!
+
+Pocket Injector
+- A class-based instance, for injecting separated classes. Pocket Injector "ties" together separate script files, by automatically injecting
+  constructed classes upon initialization. The injector also stores the instances for later, and provides a "retrieval" method for gathering
+  the instance elsewhere.
+
+---
+
+Quick Setup
+- Use "PocketInjector" namespace
+- Inherit "IInjectable" interface, onto a class you want injected
+- Within the class constructor, any "IInjectable" class-type you pass as a parameter, will be injected
+- Declare "Injector", from PocketInjector namespace, wherever you need the injection strategy to take place
+- Injector has two constructors; the default constructor, and an Assembly constructor
+  - The default constructor gathers all "IInjectable" types, from its "calling" Assembly
+  - The Assembly constructor allows you to pass an Assembly directly. All "IInjectable" types in the Assembly will be injected
+- Your instance of the Injector, has a function called ".Return<InjectedType>()"
+  - This will return the "InjectedType" you request
+  - This guarantees one instance of the type, and the type will have been constructed for you
+- Classes implementing IInjectable, can have their fields injected using the [Inject] attribute
+  - Injected field types must implement IInjectable
+  - WARNING: Fields you inject with [Inject] cannot be used in constructors!
+
+---
